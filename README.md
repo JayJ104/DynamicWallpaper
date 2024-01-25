@@ -5,9 +5,7 @@ GDSC Explorer Cohort Project - Team Eve
 ## Setting Up Your Development Environment
 This guide will help you set up your local machine with all the tools you will need in this cohort (and the webdev industry).
 
-Before you begin, create a folder for this cohort wherever you want to store any GitHub repos that you will be cloning on your device in this cohort. You can name it include, cohort, or literally anything you want to. If you choose to name it "include", do not use a '#' in your folder name, it'll cause a bunch of problems later.
-
-1. VISUAL STUDIO CODE
+### 1. VISUAL STUDIO CODE
 Visual Studio Code (or VSCode) is a code editor that makes life as a developer easy and efficient. It combines the processes of editing, building, testing and packaging an application.
 
 If you do not already use VSCode, follow these steps:
@@ -16,7 +14,7 @@ Download the VSCode installer for your OS from https://code.visualstudio.com/dow
 Run the installer and follow the installation wizard.
 Once done installing, open VSCode to see the welcome page. Press Ctrl + ` on Windows or Command + ` on Mac to open Terminal (Or you can use the terminal tab on top but it's better to get used to the shortcuts.)
 
-2. GIT, GITHUB ACCOUNT AND GITHUB DESKTOP
+### 2. GIT, GITHUB ACCOUNT AND GITHUB DESKTOP
 Git is a version control system (i.e. it helps you track the changes you have made to your code over time) and GitHub is a platform that helps you manage Git repositories and collaborate on projects.
 
 If you do not already have a GitHub Account, head over to https://github.com/ and create one.
@@ -30,7 +28,7 @@ Click on File > Options... > Accounts pane > Sign in to your GitHub.com account.
 When prompted, click on continue with browser and sign in/complete 2FA.
 After GitHub authenticates your account, you can go back to GitHub Desktop.
 
-3. NODE.JS
+### 3. NODE.JS
 Node.js is a runtime environment that is used to run Javascript code. It comes with the Node Package Manager (npm) that helps us manage the Javascript packages used in our project. To set up node.js:
 
 Download the Node.js installer for your OS from https://nodejs.org/en/download/current
@@ -49,7 +47,7 @@ d. Check for C:\Program Files\nodejs\ in the list of paths that appear. If it's 
 
 e. Restart VSCode and it should ideally work now.
 
-4. ESLINT EXTENSION
+### 4. ESLINT EXTENSION
 ESLint is an extension that ensures that your code adheres to certain code style. It also auto-formats your code on save in VSCode. To enable it:
 
 Go to the Extensions tab on VSCode and install ESLint.
@@ -65,8 +63,8 @@ Once it is installed, open your Command Palette by pressing Ctrl + SHift + P/Com
 This is a completely optional but super helfpul extension that automatically renames paired HTML tags when you edit them. You can install it on VSCode the same way you installed ESLint.
 
 
+### DOES NOT APPLY
 
-<
 This is a Next.js project bootstrapped with create-next-app.
 
 Getting Started
@@ -100,4 +98,3 @@ Deploy on Vercel
 The easiest way to deploy your Next.js app is to use the Vercel Platform from the creators of Next.js.
 
 Check out our Next.js deployment documentation for more details.
->
