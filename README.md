@@ -47,6 +47,25 @@ d. Check for C:\Program Files\nodejs\ in the list of paths that appear. If it's 
 
 e. Restart VSCode and it should ideally work now.
 
+### VIRTUAL ENVIRONMENT FOR PYTHON
+Run these commands on the terminal:
+
+```
+cd scripts
+
+python -m venv venv
+
+# activating the v.env.
+.\venv\Scripts\activate
+# you should see (venv) at the beginning of the file path in your terminal
+
+#deactivating
+deactivate
+
+#installing dependencies
+pip install -r requirements.txt
+```
+
 ### 4. ESLINT EXTENSION
 ESLint is an extension that ensures that your code adheres to certain code style. It also auto-formats your code on save in VSCode. To enable it:
 
