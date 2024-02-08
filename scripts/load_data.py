@@ -2,8 +2,6 @@
 import pandas as pd
 from pandasql import sqldf
 from IPython.display import display, HTML
-# import seaborn as sns
-
 
 data2 = pd.read_csv("../data/Spotify-2000.csv")
 # print(data2)
