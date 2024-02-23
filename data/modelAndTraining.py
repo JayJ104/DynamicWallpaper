@@ -20,7 +20,7 @@ model = tf.keras.models.Sequential([
   tf.keras.layers.AveragePooling2D(),
   tf.keras.layers.AveragePooling2D(),
   tf.keras.layers.Flatten(), #can try removing this
-  tf.keras.layers.Dense(8, activation=tf.keras.activations.softmax) #what structure is fully connected layer?
+  tf.keras.layers.Dense(8) #need to convert these numbers to numbers that make sense for song analytics. do not use softmax which calculates probabilities
 ])
 tf.keras.utils.plot_model(model, show_shapes=True)
 #predictions = model(x_train[:1]).numpy()
