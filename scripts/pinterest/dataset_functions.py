@@ -1,5 +1,7 @@
 import pandas as pd
 from pandasql import sqldf
+import os
+import json
 
 all_cols = ['id', 'track', 'artist', 'genre', 'year', 'bpm', 'energy', 'danceability', 'loudness', 'liveness', 'valence', 'track_length', 'acousticness', 'speechiness', 'popularity']
 
@@ -29,6 +31,25 @@ def write_to_HTML(df: pd.DataFrame, file: str):
     text_file.close()
     print('Dataframe written to file', file)
 
+def write_to_txt(data:dict, file:str):
+    json_data = json.dumps(data)
+    try:
+        print('Writing data to file...')
+        if(not os.path.isdir("data")):
+            os.mkdir("data")
+        file = "data/" + file
+        text_file = open(file, "w")
+        text_file.write(json_data)
+        text_file.close()
+        print('Data written to file', file)
+    except Exception as e:
+        print(f"Error: {e}")
+
+def shortlist_data():
+    # query by popularity and year, weigh year more
+    # 
+    return # 
+
 def create_dataframe(df: pd.DataFrame, cols_list=all_cols):
     # copy kaggle dataset's subdataset
     # add images
@@ -41,6 +62,9 @@ def add_images(df: pd.DataFrame):
     # explode by images col
     return #dataframe
 
-def get_all_search_keys():
-    
-    return # search_keys
+def get_all_search_keys(df: pd.DataFrame):
+    search_keys = {}
+    for i in range(len(df)):
+        track_key = df['artist'][i] + " " + df['track'][i]
+        search_keys[int(df['id'][i])] = track_key
+    return search_keys

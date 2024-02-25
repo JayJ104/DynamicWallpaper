@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 import time
 import urllib.request
 from PIL import Image
+import os
 
 def get_all_pin_urls(search_keys: dict):
     all_pin_urls = {}
@@ -45,20 +46,31 @@ def get_all_pin_urls(search_keys: dict):
 import requests
 
 
-def download(url_list, output_folder):
-    for url in url_list:
-        try:
-            filepath = output_folder + str(url_list.index(url)) + ".jpg"
-            urllib.request.urlretrieve(url, filepath)
-        except Exception as e:
-            print(f"An error occurred: {e}")
+def download(all_pin_urls, output_folder):
+    downloaded_images = {}
+    print("downloading...\n")
 
+    if(not os.path.isdir(output_folder)):
+        os.mkdir(output_folder)
 
-# def download_this_image():
-#     try:
-#         filepath = "image.jpg"
-#         urllib.request.urlretrieve("https://i.pinimg.com/736x/bb/bc/a4/bbbca4d06a901d604c54c3c8adaab67d.jpg", filepath)
-#     except Exception as e:
-#         print(f"An error occurred: {e}")
+    for key in all_pin_urls:
+        song_folder = "pins/" + str(key) + "/"
+        if(not os.path.isdir(song_folder)):
+            os.mkdir(song_folder)
 
+        url_list = all_pin_urls[key]
+        downloaded_images[key] = []
+        link_count = 0
 
+        for url in url_list:
+            if(link_count > 10):
+                break
+            try:
+                filepath = song_folder + str(url_list.index(url)) + ".jpg"
+                urllib.request.urlretrieve(url, filepath)
+                downloaded_images[key].append(filepath)
+                link_count += 1
+            except Exception as e:
+                print(f"An error occurred: {e}")
+
+    return downloaded_images
