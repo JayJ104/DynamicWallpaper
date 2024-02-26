@@ -26,15 +26,20 @@ def get_all_pin_urls(search_keys: dict):
 
     # search
     for id in search_keys:
+        pin_urls = []
         query = search_keys[id] + " aesthetic"
         query = query.replace(" ", "%20")
         search_url = f"https://www.pinterest.com/search/pins/?q={query}"
-        driver.get(search_url)
-        time.sleep(5)
 
-        pin_elements = driver.find_elements(By.CSS_SELECTOR, "div[data-test-id='pinWrapper'] img")
-        pin_urls = [element.get_attribute("src") for element in pin_elements]
-        
+        try:
+            driver.get(search_url)
+            time.sleep(10)
+
+            pin_elements = driver.find_elements(By.CSS_SELECTOR, "div[data-test-id='pinWrapper'] img")
+            pin_urls = [element.get_attribute("src") for element in pin_elements]
+        except Exception as e:
+            print(f"ERROR: {e}")
+
         all_pin_urls[id] = pin_urls
 
 
@@ -71,6 +76,6 @@ def download(all_pin_urls, output_folder):
                 downloaded_images[key].append(filepath)
                 link_count += 1
             except Exception as e:
-                print(f"An error occurred: {e}")
+                print(f"Error: {e}")
 
     return downloaded_images

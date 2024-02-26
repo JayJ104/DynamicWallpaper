@@ -4,6 +4,7 @@ import os
 import json
 
 all_cols = ['id', 'track', 'artist', 'genre', 'year', 'bpm', 'energy', 'danceability', 'loudness', 'liveness', 'valence', 'track_length', 'acousticness', 'speechiness', 'popularity']
+cols_w_img = ['id', 'track', 'artist', 'genre', 'year', 'bpm', 'energy', 'danceability', 'loudness', 'liveness', 'valence', 'track_length', 'acousticness', 'speechiness', 'popularity', 'image']
 
 def load_kaggle_data():
     data = pd.read_csv("../../data/Spotify-2000.csv")
@@ -45,22 +46,21 @@ def write_to_txt(data:dict, file:str):
     except Exception as e:
         print(f"Error: {e}")
 
-def shortlist_data():
-    # query by popularity and year, weigh year more
-    # 
-    return # 
-
-def create_dataframe(df: pd.DataFrame, cols_list=all_cols):
-    # copy kaggle dataset's subdataset
-    # add images
-    df = add_images(df)
+def create_dataframe(newName: str, df: pd.DataFrame, cols_list=all_cols):
+    # copy kaggle dataset's slice
+    new_df = df.loc[:, cols_list]
     # export as csv
-    return #dataframe
+    new_df.to_csv(f'../data/{newName}.csv')
+    return new_df
 
-def add_images(df: pd.DataFrame):
-    # add image path lists to each row
-    # explode by images col
-    return #dataframe
+def add_images(df: pd.DataFrame, image_file_paths: dict):
+    image_col = []
+    for key in image_file_paths:
+        image_col.append(image_file_paths[key])
+    df["image"] = image_col
+    exploded_df = df.explode("image")
+
+    return exploded_df
 
 def get_all_search_keys(df: pd.DataFrame):
     search_keys = {}
