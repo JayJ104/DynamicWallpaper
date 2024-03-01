@@ -35,7 +35,7 @@ def get_all_pin_urls(search_keys: dict):
             driver.get(search_url)
             time.sleep(10)
 
-            pin_elements = driver.find_elements(By.CSS_SELECTOR, "div[data-test-id='pinWrapper'] img")
+            pin_elements = driver.find_elements(By.CSS_SELECTOR, "div[data-test-id='pinWrapper'] > div:not([data-test-id='one-tap-desktop']) > div:not([data-test-id='attribution-avatar']) > div[data-test-id='non-story-pin-image'] img")
             pin_urls = [element.get_attribute("src") for element in pin_elements]
         except Exception as e:
             print(f"ERROR: {e}")
@@ -59,7 +59,7 @@ def download(all_pin_urls, output_folder):
         os.mkdir(output_folder)
 
     for key in all_pin_urls:
-        song_folder = "pins/" + str(key) + "/"
+        song_folder = f"{output_folder}/" + str(key) + "/"
         if(not os.path.isdir(song_folder)):
             os.mkdir(song_folder)
 

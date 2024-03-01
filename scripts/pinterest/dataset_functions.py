@@ -26,7 +26,6 @@ def sql_query(df: pd.DataFrame, query: str) -> pd.DataFrame:
 def write_to_HTML(df: pd.DataFrame, file: str):
     html = df.to_html()
     print('Writing to file...')
-    file = "../../data/" + file
     text_file = open(file, "w")
     text_file.write(html)
     text_file.close()
